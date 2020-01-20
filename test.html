@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>This is a test document.</title>
+        <script>
+            alert("Welcome to the new page.");
+            function onLoad(){
+                var name = document.getElementById('myName').value;
+                var today = new Date();
+                var year = today.getFullYear();
+                var month = today.getMonth();
+                var date = today.getDate();
+                //console.log(year);
+                //console.log("Test name : "+name);
+                var newArr = [];
+                console.log(newArr.length);
+                alert("Welcome "+name+"\nToday is "+today+"\nYear is "+year+"\nMonth is "+month);
+            }
+            function openWindow(){
+                myWindow = open("","_blank","width=1000,height=1000");
+                myWindow.moveBy(500,100) ; 
+                alert("HE, here you go!");
+            }
+            function showChecks(){
+                var items = document.getElementsByName('hobbies');
+                console.log(items);
+                var selectedItems = "";
+                for(let i=0;i<items.length;i++){
+
+                    if(items[i].type=='checkbox' && items[i].checked==true){
+                        selectedItems+=items[i].value+"\n";
+                    }
+                }
+                alert(selectedItems);
+
+            }
+            function showRadio(){
+                //var gender = document.getElementById('g1').value;
+                //console.log(gender);
+                if(document.getElementById('g1').checked==true)
+                {
+                    gender = document.getElementById("g1").value;
+                }
+                if(document.getElementById('g2').checked)
+                {
+                    gender = document.getElementById("g2").value;
+                }
+                if(document.getElementById('g3').checked)
+                {
+                    gender = document.getElementById("g3").value;
+                }
+                console.log(gender);
+                alert("Your gender is "+gender);
+            }
+            function checkCountry(){
+                var country = document.getElementById('countryID').value;
+            //var res = country.options[country.selectedIndex].text;
+                console.log(country);
+               // alert(res);
+               alert(country);
+            }
+            function blurNow(){
+                var x = document.getElementById('myName').value;
+                x=x.toUpperCase();
+                document.getElementById('myName').value = x;
+            }
+        </script>
+    </head>
+    <body>
+        <form name="frm1" action="#">
+            <table>
+            <caption>Fill out the form to register</caption>
+            <tr><td>Name: </th><td><input type="text" name="name" id="myName" onblur="blurNow()"></th></tr>
+            <tr><td> Class: </th><td><input type="number" id="myClass"></th></tr>
+            <tr><td>Address: </th><td><textarea name="address" id="myAddress"></textarea></th></tr>
+            <tr><td>Branch: </th><td><input name="branch" ></th></tr>
+            <tr><td>Gender: </td><td><input type = "radio" name="gender" value="male" id="g1">Male<input type="radio" name="gender" value="female" id="g2">Female<input type="radio" name="gender" value="others" id="g3">Others</td></tr>
+            <tr><td>Hobbies: </td><td><input type="checkbox" name="hobbies" value="Singing">Singing<input type="checkbox" name="hobbies" value="dancing" >Dancing<input type="checkbox" name="hobbies" value="coding">coding</td></tr>
+            <tr><td>Country: </td><td><select name="country" id="countryID"><option value="India">India</option><option value="China">China</option></td></tr>
+            <tr><td><input type="submit" value="Save"></th><td> <input type="reset" value="reset"></td></tr>
+            <tr><td><input type="button" value="Show name" onclick="onLoad()"></th><td> <input type="button" value="Open New Window" onclick="openWindow()"></td></tr>
+            <tr><td><input type="button" value="Show Gender" onclick="showRadio()"></th><td> <input type="button" value="Show Hobbies" onclick="showChecks()"></td></tr>
+            <tr><td><input type="button" value="Show Country" onclick="checkCountry()"></td></tr>
+            
+        </table>
+        </form>
+    </body>
+</html>
